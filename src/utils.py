@@ -13,7 +13,7 @@ def generate_dates_until_today(start_year: int) -> list[str]:
     dates = []
     current_date = start_date
 
-    while current_date <= end_date:
+    while current_date.date() < end_date.date():
         dates.append(current_date.strftime("%Y%m%d"))
         current_date += timedelta(days=1)
 
