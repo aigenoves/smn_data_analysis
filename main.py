@@ -20,12 +20,15 @@ def main() -> None:
         url: str = (
             f"https://ssl.smn.gob.ar/dpd/descarga_opendata.php?file=observaciones/datohorario{day}.txt"
         )
+
         save_path: Path = (
             relative_path / f"{day[0:4]}" / f"{day[4:6]}" / f"datohorario{day}.txt"
         )
-
-        # Llama a la función para descargar el archivo
-        fetch_daily_data(url, save_path)
+        if not save_path.exists():
+            # Llama a la función para descargar el archivo
+            fetch_daily_data(url, save_path)
+        else:
+            print(f"Ya existe el archivo: datohorario{day}.txt")
 
 
 if __name__ == "__main__":
