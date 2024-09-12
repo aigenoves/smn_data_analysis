@@ -14,7 +14,7 @@ def main() -> None:
     # Si necesitas un path relativo a main.py, por ejemplo, a una carpeta 'data' dentro del mismo directorio
     relative_path = main_directory / "data"
 
-    start_year = 2023
+    start_year = 2015
     dates_list = generate_dates_until_today(start_year)
     for day in dates_list:
         url: str = (
