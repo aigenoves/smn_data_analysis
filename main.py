@@ -1,5 +1,7 @@
 import sys
 from pathlib import Path
+from datetime import datetime
+
 from src.daily_data_fetcher import fetch_daily_data
 from src.utils import generate_dates_until_today
 
@@ -14,8 +16,9 @@ def main() -> None:
     # Si necesitas un path relativo a main.py, por ejemplo, a una carpeta 'data' dentro del mismo directorio
     relative_path = main_directory / "data"
 
-    start_year = 2015
-    dates_list = generate_dates_until_today(start_year)
+    start_date = datetime(2024, 9, 12)
+
+    dates_list = generate_dates_until_today(start_date=start_date)
     for day in dates_list:
         url: str = (
             f"https://ssl.smn.gob.ar/dpd/descarga_opendata.php?file=observaciones/datohorario{day}.txt"
@@ -33,3 +36,6 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+
+# (\d{8})\s+(\d+)\s+([\d.]+)\s+(\d+)\s+([\d.]+)\s+(\d+)\s+(\d+)\s+(.+)
