@@ -4,6 +4,7 @@ from datetime import datetime
 
 from src.daily_data_fetcher import fetch_daily_data
 from src.utils import generate_dates_until_today
+from src.parser.daily_data import daily_data_parser
 
 
 def main() -> None:
@@ -32,6 +33,12 @@ def main() -> None:
             fetch_daily_data(url, save_path)
         else:
             print(f"Ya existe el archivo: datohorario{day}.txt")
+
+    # Ejemplo de uso
+    data_directory = "data"
+    output_csv_file = "all_smn_daily_data.csv"
+
+    daily_data_parser(data_directory, output_csv_file)
 
 
 if __name__ == "__main__":
